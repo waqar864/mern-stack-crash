@@ -16,7 +16,7 @@ function HomePage() {
 
   console.log(products);
   return (
-    <Container>
+    <Container maxW='container.xl' py={12}>
       <VStack spacing={8}>
         <Text
           fontSize={"30"}
@@ -27,8 +27,8 @@ function HomePage() {
         >
           Current Products
           <SimpleGrid
-            columns={{ base: 1, sm: 2, md: 3 }}
-            spacing={{ base: 5, lg: 8 }}
+            columns={{ base: 1, sm: 2, md: 2, lg: 3 }}
+            spacing={{ base: 3, lg: 8 }}
             w={"full"}
           >
             {products.map((product) => (
@@ -36,12 +36,15 @@ function HomePage() {
             ))}
 
           </SimpleGrid>
+          
         </Text>
-          <Text fontSize='xl' textAlign={"center"} fontWeight={"bold"} color={"gray.600"}>No Product Found {""}
+        {products.length === 0 && (
+          <Text fontSize='xl' textAlign={"center"} fontWeight={"bold"} color={"gray.600"}>No products found 😢 {""}
           <Link to={"/create"}>
           <Text as='span' color='blue.500' _hover={{ textDecoration: 'underline' }}>Create Product</Text>
           </Link>
           </Text>
+          )}
       </VStack>
     </Container>
   )
